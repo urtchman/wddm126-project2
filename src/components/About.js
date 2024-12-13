@@ -1,21 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import team1 from '../assets/images/team1.jpg';
 import team2 from '../assets/images/team2.jpg';
 import team3 from '../assets/images/team3.jpg';
 
+// Child component for team members
+const TeamMember = ({ name, role, imgSrc }) => (
+    <div className="team-member">
+        <img src={imgSrc} alt={`${name} - ${role}`} />
+        <h3>{name}</h3>
+        <p>{role}</p>
+    </div>
+);
+
+// Child component for testimonials
+const Testimonial = ({ quote, author }) => (
+    <div className="testimonial">
+        <blockquote>{quote}</blockquote>
+        <p>- {author}</p>
+    </div>
+);
+
 const About = () => {
+    // State to hold team members and testimonials
+    const [team, setTeam] = useState([
+        { name: 'Jane Doe', role: 'Founder & CEO', imgSrc: team1 },
+        { name: 'John Smith', role: 'Travel Specialist', imgSrc: team2 },
+        { name: 'Emily Jackson', role: 'Customer Relations Manager', imgSrc: team3 },
+    ]);
+
+    const [testimonials, setTestimonials] = useState([
+        {
+            quote: "UMK Travels made our honeymoon unforgettable. Every detail was perfect, from the accommodation to the activities planned. We couldn’t have asked for a better experience!",
+            author: 'Sarah and James',
+        },
+        {
+            quote: "The best travel agency we've ever worked with. They took care of everything and made our vacation stress-free and enjoyable. Highly recommend!",
+            author: 'Alex M.',
+        },
+    ]);
+
     return (
         <main>
             {/* About Us Section */}
             <section className="about">
                 <h1>About UMK Travels</h1>
-                <p>At UMK Travel, we are dedicated to turning your travel dreams into reality. With over a decade of experience in the travel industry, our mission is to offer exceptional travel experiences that are tailored to meet the individual needs of each of our clients. Whether you’re planning a family holiday, a romantic getaway, or an adventure-filled journey, our team is here to guide you every step of the way.</p>
+                <p>
+                    At UMK Travel, we are dedicated to turning your travel dreams into reality. With over a decade of experience in the travel industry, our mission is to offer exceptional travel experiences that are tailored to meet the individual needs of each of our clients. Whether you’re planning a family holiday, a romantic getaway, or an adventure-filled journey, our team is here to guide you every step of the way.
+                </p>
             </section>
 
             {/* Mission Statement */}
             <section className="mission">
                 <h2>Our Mission</h2>
-                <p>Our mission is to create unforgettable experiences by offering expertly crafted travel itineraries, personalized services, and a commitment to quality. We strive to inspire and connect people through travel, making every trip a remarkable journey filled with lasting memories.</p>
+                <p>
+                    Our mission is to create unforgettable experiences by offering expertly crafted travel itineraries, personalized services, and a commitment to quality. We strive to inspire and connect people through travel, making every trip a remarkable journey filled with lasting memories.
+                </p>
             </section>
 
             {/* Our Services Section */}
@@ -33,37 +72,31 @@ const About = () => {
             {/* Meet Our Team Section */}
             <section className="team">
                 <h2>Meet Our Team</h2>
-                <p>Our team of travel experts is passionate about discovering the world and bringing that passion to you. Each member of our team has years of experience and a unique set of skills, from destination expertise to travel logistics and customer service. We’re here to take care of the details, so you can focus on making memories.</p>
+                <p>
+                    Our team of travel experts is passionate about discovering the world and bringing that passion to you. Each member of our team has years of experience and a unique set of skills, from destination expertise to travel logistics and customer service. We’re here to take care of the details, so you can focus on making memories.
+                </p>
                 <div className="team-grid">
-                    <div className="team-member">
-                        <img src={team1} alt="Jane Doe - Founder" />
-                        <h3>Jane Doe</h3>
-                        <p>Founder & CEO</p>
-                    </div>
-                    <div className="team-member">
-                        <img src={team2} alt="John Smith - Travel Specialist" />
-                        <h3>John Smith</h3>
-                        <p>Travel Specialist</p>
-                    </div>
-                    <div className="team-member">
-                        <img src={team3} alt="Emily Jackson - Customer Relations" />
-                        <h3>Emily Jackson</h3>
-                        <p>Customer Relations Manager</p>
-                    </div>
+                    {team.map((member, index) => (
+                        <TeamMember
+                            key={index}
+                            name={member.name}
+                            role={member.role}
+                            imgSrc={member.imgSrc}
+                        />
+                    ))}
                 </div>
             </section>
 
             {/* Testimonials Section */}
             <section className="testimonials">
                 <h2>What Our Clients Say</h2>
-                <div className="testimonial">
-                    <blockquote>"UMK Travels made our honeymoon unforgettable. Every detail was perfect, from the accommodation to the activities planned. We couldn’t have asked for a better experience!"</blockquote>
-                    <p>- Sarah and James</p>
-                </div>
-                <div className="testimonial">
-                    <blockquote>"The best travel agency we've ever worked with. They took care of everything and made our vacation stress-free and enjoyable. Highly recommend!"</blockquote>
-                    <p>- Alex M.</p>
-                </div>
+                {testimonials.map((testimonial, index) => (
+                    <Testimonial
+                        key={index}
+                        quote={testimonial.quote}
+                        author={testimonial.author}
+                    />
+                ))}
             </section>
         </main>
     );
