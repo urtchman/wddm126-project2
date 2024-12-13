@@ -1,0 +1,631 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff6f61, #f3a683);
+    color: #fff;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 111, 97, 0.7), 0 0 40px rgba(243, 166, 131, 0.7); /* Glowing effect */
+    animation: glow 1.5s infinite alternate; /* Glowing animation */
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(255, 111, 97, 0.7), 0 0 40px rgba(243, 166, 131, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(255, 111, 97, 1), 0 0 60px rgba(243, 166, 131, 1);
+    }
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    z-index: 20000;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 20000;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Responsive Navigation */
+@media (max-width: 1024px) {
+    .destination-grid {
+        grid-template-columns: repeat(3, 1fr); /* Three columns for medium screens */
+    }
+}
+ 
+
+@media (max-width: 768px) {
+    header nav {
+        display: none; /* Hide navigation links */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger icon */
+    }
+    #navbar { 
+        z-index: 20000;
+    }
+    /* Show the navigation menu when active */
+    .nav-active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: #333;
+        padding: 10px 20px;
+    }
+
+    .nav-active a {
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+    }
+
+    .destination-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for smaller screens */
+    }
+
+    .travel-guide {
+        padding: 20px;
+    }
+
+    .travel-guide h2 {
+        font-size: 1.8em;
+    }
+
+    .travel-guide h3 {
+        font-size: 1.4em;
+    }
+}
+@media (max-width: 480px) {
+    .destination-grid {
+        grid-template-columns: 1fr; /* One column for very small screens */
+    }
+}
+.hero {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    cursor: pointer;
+}
+
+.popular-destinations {
+    padding: 20px;
+}
+
+.popular-destinations h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.destination {
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+/*.destination-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four columns per row * /
+    gap: 20px;
+}*/
+
+
+/* Testimonials Section */
+.testimonials {
+    background-color: #f3f3f3;
+    padding: 30px;
+    text-align: center;
+}
+
+.testimonials h2 {
+    margin-bottom: 20px;
+}
+
+.testimonial {
+    margin: 20px auto;
+    max-width: 600px;
+    font-style: italic;
+    color: #666;
+}
+
+.testimonial blockquote {
+    font-size: 1.2em;
+    quotes: "“" "”" "‘" "’";
+}
+
+.testimonial blockquote::before {
+    content: open-quote;
+}
+
+.testimonial blockquote::after {
+    content: close-quote;
+}
+
+.testimonial p {
+    font-size: 0.9em;
+    color: #333;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Featured Article Section */
+.featured-article {
+    padding: 30px;
+    text-align: center;
+    background: #ff6f61;
+    color: white;
+}
+
+.featured-article h2 {
+    margin-bottom: 20px;
+}
+
+.featured-article article {
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.featured-article h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.featured-article .read-more {
+    display: inline-block;
+    margin-top: 15px;
+    color: #ff6f61;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Newsletter Signup Section */
+.newsletter {
+    background-color: #333;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.newsletter h2 {
+    margin-bottom: 15px;
+}
+
+.newsletter p {
+    margin-bottom: 20px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer Section */
+footer {
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-content .contact-info address {
+    font-style: normal;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.footer-content .social-links a {
+    color: #fff;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.footer-content p {
+    flex-basis: 100%;
+    margin-top: 15px;
+}
+
+/* About Page Styles */
+ 
+/* About Section */
+.about {
+    text-align: center;
+    color: #333;
+}
+
+.about h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #ff6f61;
+}
+
+.about p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Mission Section */
+.mission {
+    background-color: #f3a683;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.mission h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.mission p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Services Section */
+.services {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    border-radius: 8px;
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #ff6f61;
+    margin-bottom: 20px;
+}
+
+.services ul {
+    list-style-type: none;
+    padding: 0; 
+    margin: 0 auto;
+}
+
+.services li {
+    font-size: 1.1em;
+    padding: 10px 0;
+    color: #555;
+}
+
+.services li strong {
+    color: #ff6f61;
+}
+
+/* Team Section */
+.team {
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.team h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.team p {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+/* Team Grid Layout */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.team-member {
+    background-color: #444;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.team-member h3 {
+    color: #ff6f61;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.team-member p {
+    color: #bbb;
+    font-size: 1em;
+}
+
+/* This adjusts the layout and hover effects for the destination sections */
+.destination2:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.destination2 h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.destination2 p {
+    font-size: 1em;
+}
+.destination2 {
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    border-radius: 8px;
+    transition: transform 0.3s, opacity 0.3s;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Travel Guide Section */
+.travel-guide {
+    padding: 40px;
+    background-color: #f4f8fb;
+    color: #333;
+    line-height: 1.6; 
+    margin: 0 auto;
+}
+
+.travel-guide h2 {
+    font-size: 2.2em;
+    color: #2b6cb0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.travel-guide p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.travel-guide h3 {
+    font-size: 1.6em;
+    color: #ff6b6b;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 4px solid #2b6cb0;
+    padding-left: 10px;
+}
+
+.travel-guide ul {
+    list-style: disc inside;
+    padding-left: 20px;
+    margin: 0 0 20px 0;
+}
+
+.travel-guide ul li {
+    font-size: 1.05em;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.travel-guide ul li strong {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Loader Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: auto; /* Allows scrolling if content overflows */
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} 
+
+.modal-content2 {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto; 
+    overflow: hidden;
+}
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #007bff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.city-list {
+    width: 45%;
+}
+.city-list label {
+    display: block;
+    margin-bottom: 10px;
+}
+.selected-cities {
+    width: 45%;
+}
+
+.selected-cities table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.selected-cities th, .selected-cities td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.selected-cities th {
+    background-color: #f4f4f4;
+}
+
+.city-row {
+    display: none; /* Initially hide all rows */
+}
+/* Explore Button */
+.explore-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.explore-btn:hover {
+    background-color: #45a049;
+}
