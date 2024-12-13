@@ -1,6 +1,6 @@
 // App.js
-import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './assets/css/styles.css';
 
 import Header from './components/Header';
@@ -12,13 +12,8 @@ import Services from './components/Services';
 import TravelGuide from './components/TravelGuide';
 import Contact from './components/Contact';
 import Login from './components/Login';
-
-import logo from './assets/images/logo.svg';
-import heroVideo from './assets/videos/sydney.mp4';
-import parisImg from './assets/images/paris.jpg';
-import tokyoImg from './assets/images/tokyo.jpg';
-import newYorkImg from './assets/images/new-york.jpg';
-import sydneyImg from './assets/images/sydney.jpg';
+import Register from './components/Register';
+import ForgotPassword from './components/ForgotPassword'; 
 
 const App = () => {
   return (
@@ -33,12 +28,13 @@ const App = () => {
           <Route path="/travelguide" element={<TravelGuide />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/account/login" element={<Login />} />
+          <Route path="/account/signup" element={<Register />} />
+          <Route path="/account/forgotpassword" element={<ForgotPassword />} />
         </Routes>
         <Footer />
       </div>
     </BrowserRouter>
   );
 };
- 
-
+  
 export default App;
