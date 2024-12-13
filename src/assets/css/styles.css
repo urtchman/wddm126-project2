@@ -33,6 +33,7 @@ header {
     }
 }
 
+/* Header logo */
 header .logo {
     font-size: 1.5em;
     font-weight: bold;
